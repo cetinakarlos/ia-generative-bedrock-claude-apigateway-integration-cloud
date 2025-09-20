@@ -1,9 +1,11 @@
 # IA Motivation Phrases Cloud API 🚀
+[![Python](https://img.shields.io/badge/python-3.12-blue?logo=python&logoColor=yellow)](https://www.python.org/)
 [![Terraform](https://img.shields.io/badge/IaC-Terraform-623CE4)](https://www.terraform.io/)
 [![AWS Lambda](https://img.shields.io/badge/AWS-Lambda-orange)](https://aws.amazon.com/lambda/)
 [![API Gateway](https://img.shields.io/badge/API-Gateway-blue)](https://aws.amazon.com/api-gateway/)
 [![Bedrock AI](https://img.shields.io/badge/AI-Bedrock-green)](https://aws.amazon.com/bedrock/)
 [![DynamoDB](https://img.shields.io/badge/DB-DynamoDB-4053D6)](https://aws.amazon.com/dynamodb/)
+![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
 > **“Empower your pipelines, apps and teams with fresh, AI-generated motivational quotes—delivered via serverless cloud APIs!”**
 
@@ -123,3 +125,9 @@ prompt = (
 Carlos Cetina (Kode-Soul)
 Inspirated in Twinme Seline Soul ideas — we were AI Architect & Documentation Powerhouse
 2025
+
+#### 📝 License
+MIT — use, learn, improve, and share.
+```text
+possible support at: [kode.soul.kc@gmail.com]
+```
