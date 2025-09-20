@@ -32,10 +32,9 @@ The architecture is fully **serverless**, **stateless**, and **cost-efficient**,
 
 ---
 
-```yaml
-
 ## 🧩 Features
 
+```yaml
 - **GET `/motivation`** — fetch a fresh motivational quote from DynamoDB.
 - **Automatic AI generation:** Daily scheduled phrases via EventBridge + Bedrock Claude 3 Sonnet.
 - **On-demand AI generation:** Easily extend to trigger phrase generation any time.
@@ -44,11 +43,10 @@ The architecture is fully **serverless**, **stateless**, and **cost-efficient**,
 ```
 ---
 
-```bash
 ## 🚀 Quickstart
 
-### 1. **Clone the repo**
 ```bash
+### 1. **Clone the repo**
 git clone https://github.com/cetinakarlos/ia-motivation-phrases-cloud-api.git
 cd ia-motivation-phrases-cloud-api
 ```
