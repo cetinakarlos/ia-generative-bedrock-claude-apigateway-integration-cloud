@@ -1,0 +1,11 @@
+# grants over apigateway to invoke lambdas:
+aws lambda add-permission \
+  --function-name readMotivationalQuote \
+  --statement-id AllowExecutionFromAPIGateway \
+  --action lambda:InvokeFunction \
+  --principal apigateway.amazonaws.com \
+  --source-arn "arn:aws:execute-api:us-east-1:419648977688:op49f0zgz2/*/GET/motivation"
+
+
+
+curl -H "Authorization: magic-token" https://op49f0zgz2.execute-api.us-east-1.amazonaws.com/prod/motivation
