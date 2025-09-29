@@ -11,20 +11,23 @@
 
 ---
 
-## ✨ Overview
+## ✨ Overview (optimized)
 
-This project delivers an **AI-powered REST API** to generate and serve original motivational phrases for tech teams, CI/CD pipelines, dashboards, or applications.  
-Designed for seamless integration, the API offers **secure, programmatic access to generative AI** via standard REST endpoints, protected with **JWT-based authentication** and token validation through a custom **Lambda Authorizer**.
+This project exposes a **secure, serverless REST API** that delivers fresh, AI-generated motivational phrases.  
+It combines **Amazon Bedrock** (Claude 3 Sonnet) for generation, **DynamoDB** for durable storage, and **API Gateway + Lambda** with **JWT** protection.  
+A daily job pre-generates phrases so the hot path stays **low-latency** and **cost-efficient**.
 
-The backend leverages **AWS Lambda**, **Bedrock Claude 3 Sonnet**, **API Gateway**, and **DynamoDB**, all provisioned and managed with **Terraform**.  
-The architecture is fully **serverless**, **stateless**, and **cost-efficient**, ensuring no operational overhead and scalable on demand.
+### How it works (daily + on-demand)
 
-**Key features:**
-
-- **Multi-layered security:** Lambda Authorizer for JWT/token validation, API throttling, WAF-ready.
-- **RESTful & DevOps-friendly:** Instantly consumable from any pipeline, workflow, or application that supports HTTP calls.
-- **Plug-and-play integration:** Easily connect motivational phrase generation to any frontend, backend, Slackbot, dashboard, or workflow that can call an authenticated REST API.
-- **Generative AI for everyone:** Expose the power of Bedrock Claude 3 to your team, product, or automation—without writing a single ML model or worrying about infra.
+1. **Daily generation (EventBridge → Lambda → Bedrock):**  
+   A scheduled Lambda calls Bedrock to generate _N_ phrases per locale/tag. Content is validated and deduplicated.
+2. **Storage (DynamoDB):**  
+   Phrases are stored with a date-partitioned key and a content hash (for idempotency). Optional **TTL** supports automatic pruning.
+3. **Secure access (API Gateway + JWT):**  
+   A Lambda Authorizer validates JWTs (JWKs / issuer). Authorized calls hit the data Lambda.  
+   - **GET** endpoints are cacheable at API Gateway to reduce Lambda invocations.
+4. **On-demand generation (optional):**  
+   Admin-only endpoint can call Bedrock on demand; responses are also persisted in DynamoDB.
 
 ---
 
